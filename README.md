@@ -1,49 +1,70 @@
-# MovieWeb Kickstart Project
+# 🎬 Filmovies
 
-A launching point for building a movie streaming website.
+**Filmovies** is a production-level movie & TV streaming web application built with a strong focus on **UI/UX**, **performance**, and **clean architecture**.
 
-## Features
+The platform delivers a **beautiful, unique, and fully responsive experience**, accessible on both **desktop and mobile**, with **no ads** and **multiple streaming servers**.
 
-- **Browse Movies**: Explore a vast collection of movies sorted by genre, release date, or popularity.
-- **Search Functionality**: Easily find movies by title, director, or cast.
-- **User Reviews**: Read and write reviews to share your thoughts and opinions about movies.
-- **User Ratings**: Rate movies and see the average ratings provided by the community.
-- **Recommendation Engine**: Get personalized movie recommendations based on your preferences and viewing history.
-- **Responsive Design**: Enjoy a seamless experience across devices with our responsive web design.
+---
 
-## Deployments
-### Deploy with Vercel
-1. Click the button below to deploy the project on Vercel.
+## ⚠️ Disclaimer
 
-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbitfreee%2Fmovie-web-kickstart&env=NEXT_PUBLIC_APP_URL,NEXT_PUBLIC_TMDB_TOKEN,NEXT_PUBLIC_SITE_NAME) 
-2. Fill in the required environment variables:
-- `NEXT_PUBLIC_APP_URL`: The URL of your deployed project (e.g., `https://movie-web-kickstart.vercel.app`)
-- `NEXT_PUBLIC_TMDB_TOKEN`: Your TMDb API key (get it [here](https://www.themoviedb.org/documentation/api), or you can use default token in .env.example file for testing)
-- `NEXT_PUBLIC_SITE_NAME`: The name of your website (e.g., `MovieWeb Kickstart`)
+This project is **non-commercial** and **academic** in nature.
 
-3. Click "Deploy" and wait for the deployment to complete.
+Filmovies:
+- Does **not host**, **store**, or **own** any movies or TV shows
+- Does **not upload** or **distribute** copyrighted content
+- Only embeds content from **third-party providers**
 
-### Deploy with Cloudflare Pages
-To deploy on [Cloudflare Pages](https://pages.cloudflare.com/) you can use the following instructions:
-[README](https://github.com/cloudflare/next-on-pages/tree/main/packages/next-on-pages)
+All trademarks, logos, and media belong to their respective owners.
 
-## Local Development
+---
 
-1. Clone the repository: `git clone https://github.com/bitfreee/movie-web-kickstart`
-2. Navigate to the project directory: `cd movie-web-kickstart`
-3. Install dependencies: `npm install`
-4. Create .env file `cp .env.example .env`
-4. Start the development server: `npm run dev`
+## ✨ Features
 
-## Tech Stack
+- 🎥 Stream **Movies & TV Shows** using multiple servers
+- 🆕 Browse **latest movies and TV shows**
+- 📱 Fully **responsive design** (mobile, tablet, desktop)
+- 🚫 **No ads** – clean and distraction-free UI
+- ⚡ High-performance navigation
+- 🎨 Modern, polished, and unique UI/UX
+- 🧩 Clean and scalable architecture
+- 🧠 State management using Zustand
+- 🧱 Component-driven React architecture
 
-- [Next.js](https://nextjs.org/) – framework
-- [TypeScript](https://www.typescriptlang.org/) – language
-- [Tailwind](https://tailwindcss.com/) – CSS
-- [Vercel](https://vercel.com/) – deployments
-- [TMDb](https://www.themoviedb.org/) - movie database
-- [Vidsrc.cc](https://vidsrc.cc) - streaming links
+---
 
+## 🛠 Technologies Used
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Zustand
+- TMDB (movie & TV metadata)
+- Vidsrc & Vidlink (streaming sources)
+
+---
+
+## 📂 Architecture
+
+This project follows:
+- Clean Architecture principles
+- Feature-based folder structure
+- Separation of concerns
+- Reusable and scalable components
+- Maintainable state management
+
+---
+
+## 🚀 Getting Started (Local Development)
+
+### 1️⃣ Clone the repository
+```bash
+git clone <repository-url>
+cd filmovies
+cp .env.example .env
+npm install
+npm run dev
+```
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
@@ -54,6 +75,8 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature/improvement`).
 6. Create a new Pull Request.
+
+## DMCA Notice
 
 ## License
 
