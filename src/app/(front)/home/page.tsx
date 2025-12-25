@@ -1,4 +1,4 @@
-"use client"
+export const runtime = "nodejs";
 
 import Hero from '@/components/hero';
 import ShowsContainer from '@/components/shows-container';
