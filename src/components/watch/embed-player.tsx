@@ -1,0 +1,133 @@
+'use client';
+import React from 'react';
+import Loading from '../ui/loading';
+import { useRouter } from 'next/navigation';
+import { MediaType, type IEpisode, type ISeason, type Show } from '@/types';
+import MovieService from '@/services/MovieService';
+import { type AxiosResponse } from 'axios';
+import Season from '../season';
+
+interface EmbedPlayerProps {
+  url: string;
+  movieId?: string;
+  mediaType?: MediaType;
+  noSandbox?:boolean;
+}
+
+function EmbedPlayer(props: EmbedPlayerProps) {
+  const router = useRouter();
+
+  const [seasons, setSeasons] = React.useState<ISeason[] | null>(null);
+
+ React.useEffect(() => {
+  if (props.mediaType === MediaType.ANIME) return;
+  if (!props.url) return;
+
+  handleSetIframeUrl(props.url);
+}, [props.url]);
+
+  React.useEffect(() => {
+    if (!props.movieId || props.mediaType !== MediaType.ANIME) {
+      return;
+    }
+
+    void handleAnime(props.movieId);
+  }, [props.movieId, props.mediaType]);
+
+  const loadingRef = React.useRef<HTMLDivElement>(null);
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+
+  const handleChangeEpisode = (episode: IEpisode): void => {
+    const { show_id: id, episode_number: eps } = episode;
+    handleSetIframeUrl(`https://vidsrc.cc/v2/embed/anime/tmdb${id}/${eps}/sub`);
+  };
+ const includeSandbox = (): boolean =>{
+if (props.url.includes("moviesapi.club") || props.url.includes("vidsrc.su") || props.url.includes("vidsrc.cc/v3/") || props.url.includes("111movies.com/") ) 
+  return true
+else{
+  return false
+}
+ } 
+  const handleAnime = async (movieId: string) => {
+    const id = Number(movieId.replace('t-', ''));
+    const response: AxiosResponse<Show> = await MovieService.findTvSeries(id);
+    const { data } = response;
+    if (!data?.seasons?.length) {
+      return;
+    }
+    const seasons = data.seasons.filter(
+      (season: ISeason) => season.season_number,
+    );
+    const promises = seasons.map(async (season: ISeason) => {
+      return MovieService.getSeasons(id, season.season_number);
+    });
+
+    const seasonWithEpisodes = await Promise.all(promises);
+    setSeasons(
+      seasonWithEpisodes.map((res: AxiosResponse<ISeason>) => res.data),
+    );
+    handleSetIframeUrl(
+      `https://vidsrc.cc/v2/embed/anime/tmdb${id}/1/sub?autoPlay=false`,
+    );
+  };
+
+  const handleSetIframeUrl = (url: string): void => {
+    if (!iframeRef.current) {
+      return;
+    }
+    iframeRef.current.src = url;
+    const { current } = iframeRef;
+    const iframe: HTMLIFrameElement | null = current;
+    iframe.addEventListener('load', handleIframeLoaded);
+    if (loadingRef.current) loadingRef.current.style.display = 'flex';
+  };
+
+  const handleIframeLoaded = () => {
+    if (!iframeRef.current) {
+      return;
+    }
+    const iframe: HTMLIFrameElement = iframeRef.current;
+    if (iframe) {
+      iframe.style.opacity = '1';
+      iframe.removeEventListener('load', handleIframeLoaded);
+      if (loadingRef.current) loadingRef.current.style.display = 'none';
+    }
+  };
+
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        backgroundColor: '#000',
+      }}>
+      {seasons && (
+        <Season seasons={seasons ?? []} onChangeEpisode={handleChangeEpisode} />
+      )}
+      <div
+        ref={loadingRef}
+        className="absolute z-[1] flex h-full w-full items-center justify-center">
+        <Loading />
+      </div>
+      
+      <iframe
+        width="100%"
+        height="100%"
+        allowFullScreen
+        ref={iframeRef}
+        style={{ opacity: 0 }}
+        
+     sandbox={
+    !includeSandbox()
+      ? "allow-scripts allow-same-origin allow-presentation"
+      : undefined
+  }
+  referrerPolicy="no-referrer"
+      />
+    </div>
+  );
+}
+
+export default EmbedPlayer;
+{/* <IFRAME SRC="https://uqload.cx/embed-p9n6tl74j611.html" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME> */}
