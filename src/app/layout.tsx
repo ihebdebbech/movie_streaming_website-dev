@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  verification: {
+    google: siteConfig.verificationCode,
+  },
   keywords: siteConfig.keywords,
   authors: [
     {

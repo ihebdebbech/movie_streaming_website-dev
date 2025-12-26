@@ -10,6 +10,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: env.NEXT_PUBLIC_SITE_NAME,
+  verificationCode:env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   author: env.NEXT_PUBLIC_SITE_NAME,
   slogan: 'Watch TV Shows Online, Watch Movies Online.',
   description:

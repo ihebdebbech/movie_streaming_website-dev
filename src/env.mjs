@@ -25,6 +25,7 @@ export const env = createEnv({
     NEXT_PUBLIC_INSTAGRAM: z.string().url().optional(),
     NEXT_PUBLIC_YOUTUBE: z.string().url().optional(),
     NEXT_PUBLIC_IMAGE_DOMAIN: z.string().optional(),
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string(),
   },
 
   /**
@@ -46,6 +47,8 @@ export const env = createEnv({
     NEXT_PUBLIC_YOUTUBE:
       process.env.NEXT_PUBLIC_YOUTUBE ?? 'https://youtube.com',
     NEXT_PUBLIC_IMAGE_DOMAIN: process.env.NEXT_PUBLIC_IMAGE_DOMAIN,
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION : process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
