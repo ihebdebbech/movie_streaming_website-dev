@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import Hero from '@/components/hero';
 import ShowsContainer from '@/components/shows-container';
 import { siteConfig } from '@/configs/site';
@@ -69,7 +70,7 @@ export default async function TvShowPage() {
     },
   ];
   const allShows = await MovieService.getShows(requests);
-  const randomShow: Show | null = getRandomShow(allShows);
+  const randomShow: Show[] | null = getRandomShow(allShows);
 
   return (
     <>

@@ -194,14 +194,20 @@ export async function handleModal(slug: string): Promise<Show | null> {
   return MovieService.findCurrentMovie(movieId, slug);
 }
 
-export function getRandomShow(allShows: CategorizedShows[]): Show[] {
-  const result: Show[] = [];
+export function getRandomShow(allShows: CategorizedShows[], count = 4): Show[] {
   const shows = allShows[0]?.shows ?? [];
 
-  for (let i = 0; i < 4; i++) {
-    const idx = Math.floor(Math.random() * shows.length);
-    result.push(shows[idx]);
+  if (!shows.length) return [];
+
+  // Make a copy to avoid mutating the original array
+  const shuffled = [...shows];
+
+  // Fisher–Yates shuffle
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  return result;
+  // Take the first 'count' elements
+  return shuffled.slice(0, Math.min(count, shuffled.length));
 }
