@@ -25,19 +25,25 @@ export default function Index() {
             className="rounded-md px-3.5 py-1.5"
             variant="secondary"
           >
-            <Icons.twitter className="mr-2 h-3.5 w-3.5" />
-            Follow along on Twitter
+            <Icons.instagram className="mr-2 h-3.5 w-3.5" />
+            Follow along on instagram
           </Badge>
-          <span className="sr-only">Twitter</span>
+          <span className="sr-only">Instagram</span>
         </Link>
-        <h1 className="max-w-screen-lg text-center font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-          {siteConfig.name} - {siteConfig.slogan}
-          {/* {siteConfig.name} - watch tv shows online, watch movies online. */}
-          {/* An e-commerce skateshop built with everything new in Next.js 13 */}
-        </h1>
+        
+    <h1 className="max-w-screen-lg text-center font-heading text-5xl sm:text-5xl md:text-9xl lg:text-9xl">
+  {/* Brand name first for SEO */}
+  <span>{siteConfig.name}</span>
+  {/* Slogan below, same styling */}
+  <span className="block mt-4 text-xl sm:text-2xl md:text-3xl">
+    {siteConfig.slogan}
+  </span>
+</h1>
+
+        
         <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Step into a world where entertainment knows no boundaries, where your
-          screens come alive with an endless array of captivating stories.
+          Dive into a universe of movies and TV shows — from blockbusters to hidden
+          gems, all streaming ad-free, anywhere you want on any device.
         </p>
         <div className="space-x-4" onClick={() => useLoadingStore.getState().show()}>
           <Link className={`${buttonVariants({ size: "lg" })}`} href="/home"   >

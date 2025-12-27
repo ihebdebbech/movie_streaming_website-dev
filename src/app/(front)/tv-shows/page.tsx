@@ -1,4 +1,5 @@
 export const runtime = "nodejs";
+import FlowingLightStreaks from '@/components/flowing-light-streaks';
 import Hero from '@/components/hero';
 import ShowsContainer from '@/components/shows-container';
 import { siteConfig } from '@/configs/site';
@@ -74,9 +75,19 @@ export default async function TvShowPage() {
 
   return (
     <>
+     <div className="min-h-screen w-full  bg-gradient-to-br from-lightdarkslate via-lightdarkblue to-lightdarkslate">
+          
+             <div className="fixed inset-0 overflow-hidden ">
+              <FlowingLightStreaks/>
+        {/* Flowing Light Streaks */}
+     
+
+        {/* Enhanced Stars */}
+      </div>
       <h1 className="hidden">{h1}</h1>
       <Hero randomShow={randomShow} />
       <ShowsContainer shows={allShows} />
+    </div>
     </>
   );
 }

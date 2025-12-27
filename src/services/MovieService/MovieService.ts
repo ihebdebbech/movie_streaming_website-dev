@@ -97,10 +97,10 @@ class MovieService extends BaseService {
         return `/discover/${req.mediaType}?with_keywords=210024%2C&with_networks=213&language=en-US`;
       case RequestType.TRENDING:
         return `/trending/${req.mediaType
-          }/day?language=en-US&with_original_language=en&page=${req.page ?? 1}`;
+          }/week?language=en-US&with_original_language=en&page=${req.page ?? 1}`;
       case RequestType.TOP_RATED:
         return `/${req.mediaType}/top_rated?page=${req.page ?? 1
-          }&with_original_language=en&language=en-US`;
+          }&with_original_language=en&language=en-US&sort_by=popularity.desc`;
       case RequestType.NETFLIX:
         return `/discover/${req.mediaType
           }?with_networks=213&with_original_language=en&language=en-US&page=${req.page ?? 1
@@ -111,7 +111,7 @@ class MovieService extends BaseService {
           }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.GENRE:
         return `/discover/${req.mediaType}?with_genres=${req.genre
-          }&language=en-US&with_original_language=en&page=${req.page ?? 1
+          }&language=en-US&with_original_language=en&&sort_by=popularity.desc&page=${req.page ?? 1
           }&without_genres=${Genre.TALK},${Genre.NEWS}`;
       case RequestType.ANIME_GENRE:
         return `/discover/${req.mediaType}?with_genres=${req.genre
