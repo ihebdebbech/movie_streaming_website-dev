@@ -40,21 +40,6 @@ export default function Page({ params }: { params: { slug: string } }) {
          season_number : 1,
         air_date : data.first_air_date ?? "" , poster_path : data.poster_path ?? "" , vote_average : data.vote_average , episodes : [{name : data.title ?? "", air_date : data.first_air_date ?? "",runtime : data.runtime ?? 1, episode_number : 1 , episode_type : "movie"  , guest_stars : [], crew : []}]  }
          setSeasons([season])
-        // if (!data?.seasons?.length) {
-    //    useLoadingStore.getState().hide();
-    //   return;
-    // }
-    // const seasonsFiltered = data.seasons.filter(
-    //   (season: ISeason) => season.season_number,
-    // );
-    // const promises = seasonsFiltered.map(async (season: ISeason) => {
-    //   return MovieService.getSeasons(movieId, season.season_number);
-    // });
-
-    // const seasonWithEpisodes = await Promise.all(promises);
-    
-    //     setSeasons(
-    //   seasonWithEpisodes.map((res: AxiosResponse<ISeason>) => res.data) );
      setShow(response.data)
       useLoadingStore.getState().hide();
 

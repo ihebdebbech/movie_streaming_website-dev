@@ -41,8 +41,8 @@ function EmbedPlayer(props: EmbedPlayerProps) {
     const { show_id: id, episode_number: eps } = episode;
     handleSetIframeUrl(`https://vidsrc.cc/v2/embed/anime/tmdb${id}/${eps}/sub`);
   };
- const includeSandbox = (): boolean =>{
-if (props.url.includes("moviesapi.club") || props.url.includes("vidsrc.su") || props.url.includes("vidsrc.cc/v3/") || props.url.includes("111movies.com/") ) 
+ const dontIncludeSandbox = (): boolean =>{
+if (props.url.includes("moviesapi.club") || props.url.includes("vidsrc.su") || props.url.includes("vidsrc.cc/v3/") || props.url.includes("111movies.com/") || props.url.includes("vidsrcme.ru/")  ) 
   return true
 else{
   return false
@@ -119,7 +119,7 @@ else{
         style={{ opacity: 0 }}
         
      sandbox={
-    !includeSandbox()
+    !dontIncludeSandbox()
       ? "allow-scripts allow-same-origin allow-presentation"
       : undefined
   }

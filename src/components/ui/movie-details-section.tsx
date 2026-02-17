@@ -26,18 +26,16 @@ export function MovieDetails({ showWithGenre, showSeason, showEpisode, setUrl, i
 
     //s https://uqload.cx/p9n6tl74j611.html
     // { name: "Server 1", urlMovie: `https://vidsrcme.su/embed/${showType}/${id}`,urlTv: `https://vidsrcme.su/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
-    //{ name: "Server 1", urlMovie: `https://111movies.com/${showType}/${id}`, urlTv: `https://111movies.com/${showType}/${id}/${showSeason}/${showEpisode}` },
     //https://godriveplayer.com/player.php?type=series&tmdb=111110&season=1&episode=1
 //https://multiembed.mov/directstream.php?video_id=tt6791350
+ //urlTv: `https://embed.vidsrc.pk/${showType}/${id}/${showSeason}-${showEpisode}` },
       // { name: "Server 2", urlMovie: `https://vidsrc.icu/embed/${showType}/${id}`, urlTv: `https://vidsrc.icu/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
     //  { name: "Server 4", urlMovie: `https://www.2embed.cc/embed/${id}`, urlTv: `https://www.2embed.cc/embedtv/${id}&s=${showSeason}&e=${showEpisode}` },
-    { name: "Server 1", urlMovie: `https://embed.vidsrc.pk/${showType}/${id}`, urlTv: `https://embed.vidsrc.pk/${showType}/${id}/${showSeason}-${showEpisode}` },
-
+        { name: "Server 1", urlMovie: `https://vidsrc.cc/v2/embed/${showType}/${id}`, urlTv: `https://vidsrc.cc/v2/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
     { name: "Server 2", urlMovie: `https://moviesapi.club/${showType}/${id}`, urlTv: `https://moviesapi.club/${showType}/${id}-${showSeason}-${showEpisode}` },
     { name: "Server 3", urlMovie: `https://www.vidking.net/embed/${showType}/${id}`, urlTv: `https://www.vidking.net/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
-
     { name: "Server 4", urlMovie: `https://vidsrc.cc/v3/embed/${showType}/${id}`, urlTv: `https://vidsrc.cc/v3/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
-    { name: "Server 5", urlMovie: `https://vidsrc.cc/v2/embed/${showType}/${id}`, urlTv: `https://vidsrc.cc/v2/embed/${showType}/${id}/${showSeason}/${showEpisode}` },
+    { name: "Server 5", urlMovie: `https://vidsrcme.ru/embed/movie?tmdb=${id}`, urlTv: `https://vidsrcme.ru/embed/${showType}?tmdb=${id}&season=${showSeason}&episode=${showEpisode}` },
     { name: "Server 6", urlMovie: `https://111movies.com/${showType}/${id}`, urlTv: `https://111movies.com/${showType}/${id}/${showSeason}/${showEpisode}` },
 
   //  { name: "Server 6", urlMovie: `https://vidsrc.su/${showType}/${id}`, urlTv: `https://vidsrc.su/${showType}/${id}/${showSeason}/${showEpisode}` },
