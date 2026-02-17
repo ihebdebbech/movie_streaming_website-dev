@@ -13,7 +13,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 const fontSans = FontSans({
   subsets: ['latin'],
