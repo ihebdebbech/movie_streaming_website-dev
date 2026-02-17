@@ -14,9 +14,9 @@ export const siteConfig = {
   author: env.NEXT_PUBLIC_SITE_NAME,
   slogan: 'Ad-Free Streaming: Movies & TV Shows — Trending, Popular, All in One Place.',
   description:
-    'Watch movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.',
+    'Ad-Free Streaming: Movies & TV Shows — Trending, Popular, All in One Place.',
   keywords: [
-    'filmoviez',
+    'Filmoviez',
     'filmoviezz',
     'watch movies',
     'movies online',
@@ -28,7 +28,7 @@ export const siteConfig = {
     'stream tv',
     'film movies',
     'watch online',
-    'fmoviez',
+    'fmoviezz',
     'watch serie',
     'filmoviezz vercel',
     'no download',
