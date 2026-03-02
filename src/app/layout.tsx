@@ -10,7 +10,7 @@ import  Analytics  from '@/components/analytics';
 import { siteConfig } from '@/configs/site';
 import { env } from '@/env.mjs';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
+import { Suspense } from "react";
 import Script from 'next/script';
 
 // export const runtime = 'edge';
@@ -95,7 +95,9 @@ export default function RootLayout({
           {/* <TrpcProvider> */}
           {children}
           <TailwindIndicator />
-          <Analytics />
+          <Suspense fallback={null}>
+  <Analytics />
+</Suspense>
     <Script
   src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
   strategy="afterInteractive"
