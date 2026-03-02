@@ -6,11 +6,11 @@ import '@/styles/globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import localFont from 'next/font/local';
-import { Analytics } from '@/components/analytics';
+import  Analytics  from '@/components/analytics';
 import { siteConfig } from '@/configs/site';
 import { env } from '@/env.mjs';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { GoogleAnalytics } from '@next/third-parties/google';
+
 import Script from 'next/script';
 
 // export const runtime = 'edge';
@@ -95,28 +95,23 @@ export default function RootLayout({
           {/* <TrpcProvider> */}
           {children}
           <TailwindIndicator />
-          {/* <Analytics />
-          <SpeedInsights /> */}
+          <Analytics />
+    <Script
+  src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+  `}
+</Script>
+          {/*  <SpeedInsights /> */}
           {/* </TrpcProvider> */}
-          {/* {env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
-            <>
-              <Script
-                id="_next-ga-init"
-                dangerouslySetInnerHTML={{
-                  __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', '${env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}', { cookie_flags: 'max-age=86400;secure;samesite=none' });`,
-                }}
-              />
-              <Script
-                id="_next-ga"
-                src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
-              />
-            </>
-          )} */}
         </ThemeProvider>
       </body>
     </html>

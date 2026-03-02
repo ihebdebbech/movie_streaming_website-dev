@@ -137,3 +137,10 @@ export interface IStack<T> {
   peek(): T | undefined;
   size(): number;
 }
+export {};
+
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
