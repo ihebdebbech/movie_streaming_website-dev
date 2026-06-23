@@ -77,19 +77,24 @@ export function MainNav({ items }: MainNavProps) {
   };
 
   async function searchShowsByQuery(value: string) {
+   
     if (!value?.trim()?.length) {
       if (path === '/search') {
-        router.push('/home');
-      } else {
-        window.history.pushState(null, '', path);
+       router.back()
+      } else { console.log("in search0")
+     router.back()
       }
+       
       return;
     }
 
     if (getSearchValue('q')?.trim()?.length) {
-      window.history.replaceState(null, '', `search?q=${value}`);
+       console.log("in search 2")
+    //   router.replace
+       router.replace(`/search?q=${value}`);
     } else {
-      window.history.pushState(null, '', `search?q=${value}`);
+       console.log("in search 3")
+       router.push(`/search?q=${value}`);
     }
 
     searchStore.setQuery(value);
@@ -220,14 +225,6 @@ export function MainNav({ items }: MainNavProps) {
           onChangeStatusOpen={handleChangeStatusOpen}
           containerClassName={cn(path === '/' ? 'hidden' : 'flex')}
         />
-        <Link
-          rel="noreferrer"
-          target="_blank"
-          href={siteConfig.links.github}
-          className={cn(path === '/' ? 'flex' : 'hidden')}>
-          <Icons.gitHub className="h-5 w-5 hover:bg-transparent" />
-        </Link>
-        <ThemeToggle />
       </div>
     </nav>
   );

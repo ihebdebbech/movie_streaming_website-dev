@@ -46,7 +46,7 @@ const ShowsGrid = ({ shows, query }: SearchedShowsProps) => {
               query && 'max-sm:grid-cols-3 max-[375px]:grid-cols-2',
             )}>
             {shows.map((show: Show) => (
-              <ShowCard key={show.id} show={show} pathname={pathname} />
+              <ShowCard key={show.id} show={show}  forcePosterImage={true} />
             ))}
           </div>
         )}

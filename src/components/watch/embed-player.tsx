@@ -42,11 +42,7 @@ function EmbedPlayer(props: EmbedPlayerProps) {
     handleSetIframeUrl(`https://vidsrc.cc/v2/embed/anime/tmdb${id}/${eps}/sub`);
   };
  const dontIncludeSandbox = (): boolean =>{
-if (props.url.includes("moviesapi.club") || props.url.includes("vidsrc.su") || props.url.includes("vidsrc.cc/v3/") || props.url.includes("111movies.com/") || props.url.includes("vidsrcme.ru/")  ) 
   return true
-else{
-  return false
-}
  } 
   const handleAnime = async (movieId: string) => {
     const id = Number(movieId.replace('t-', ''));
@@ -123,7 +119,8 @@ else{
       ? "allow-scripts allow-same-origin allow-presentation"
       : undefined
   }
-  referrerPolicy="no-referrer"
+
+  referrerPolicy="origin"
       />
     </div>
   );

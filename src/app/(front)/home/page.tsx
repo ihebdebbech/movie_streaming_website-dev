@@ -96,7 +96,9 @@ export default async function Home() {
       </div>
       <h1 className="hidden">{h1}</h1>
       <Hero randomShow={randomShow} />
+      <div className='md:pt-24'>
       <ShowsContainer shows={allShows} />
+      </div>
     </div>
     </>
   );

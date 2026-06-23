@@ -27,6 +27,7 @@ export const env = createEnv({
     NEXT_PUBLIC_IMAGE_DOMAIN: z.string().optional(),
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string(),
     NEXT_PUBLIC_GEMINI_API_KEY : z.string(),
+    NEXT_PUBLIC_OPEN_ROUTER_API_KEY : z.string(),
     NEXT_PUBLIC_GA_ID : z.string()
   },
 
@@ -51,6 +52,7 @@ export const env = createEnv({
     NEXT_PUBLIC_IMAGE_DOMAIN: process.env.NEXT_PUBLIC_IMAGE_DOMAIN,
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION : process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     NEXT_PUBLIC_GEMINI_API_KEY : process.env.NEXT_PUBLIC_GEMINI_API_KEY,
+    NEXT_PUBLIC_OPEN_ROUTER_API_KEY : process.env.NEXT_PUBLIC_OPEN_ROUTER_API_KEY,
     NEXT_PUBLIC_GA_ID : process.env.NEXT_PUBLIC_GA_ID
     
   },

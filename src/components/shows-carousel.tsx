@@ -53,7 +53,7 @@ const ShowsCarousel = ({ title, shows }: ShowsCarouselProps) => {
   };
 
   return (
-    <section aria-label="Carousel of shows" className="relative my-[6vw] p-0 h-[350px] md:h-[450px]">
+    <section aria-label="Carousel of shows" className="relative  p-0 h-[250px] md:h-[450px] mb-12 md:0">
       {shows.length !== 0 && (
         <div className=" sm:space-y-2.5">
           <h2 className="m-0 px-[4%] text-lg font-semibold text-foreground/80 transition-colors hover:text-foreground sm:text-xl 2xl:px-[60px]">
@@ -72,9 +72,9 @@ const ShowsCarousel = ({ title, shows }: ShowsCarouselProps) => {
             </Button>
             <div
               ref={showsRef}
-              className="no-scrollbar m-0 grid auto-cols-[calc(100%/3)] grid-flow-col overflow-x-auto px-[4%]  duration-500 ease-in-out auto-cols-[45%] md:touch-pan-y lg:auto-cols-[20%] xl:auto-cols-[calc(100%/6)] 2xl:px-[60px] gap-2 hover:overflow-y-visible py-10">
+              className="no-scrollbar  grid  grid-flow-col overflow-x-auto px-[4%]  duration-500 ease-in-out auto-cols-[90%] md:touch-pan-y lg:auto-cols-[20%] xl:auto-cols-[calc(100%/6)] 2xl:px-[60px] gap-3 hover:overflow-y-visible py-10">
               {shows.map((show) => (
-                <ShowCard key={show.id} show={show} pathname={pathname} />
+                <ShowCard key={show.id} show={show}  />
               ))}
             </div>
             <Button
@@ -93,7 +93,7 @@ const ShowsCarousel = ({ title, shows }: ShowsCarouselProps) => {
 
 export default ShowsCarousel;
 
-export const ShowCard = ({ show }: { show: Show; pathname: string }) => {
+export const ShowCard = ({ show ,forcePosterImage = false }: { show: Show; forcePosterImage?: Boolean }) => {
   const imageOnErrorHandler = (
     event: React.SyntheticEvent<HTMLImageElement, Event>,
   ) => {
@@ -110,7 +110,7 @@ export const ShowCard = ({ show }: { show: Show; pathname: string }) => {
   };
 
   return (
-    <div className="group relative z-0 hover:z-50 w-full h-72 md:h-80 overflow-hidden rounded-lg bg-neutral-800 transition-all duration-500 cursor-pointer hover:scale-105   hover:-translate-y-8"
+    <div className="group relative z-0 hover:z-50 w-full h-52 md:h-96 overflow-hidden rounded-lg bg-neutral-800 transition-all duration-500 cursor-pointer hover:scale-105   hover:-translate-y-8"
        onClick={() => {
           const name = getNameFromShow(show);
           console.log(show)
@@ -137,24 +137,39 @@ export const ShowCard = ({ show }: { show: Show; pathname: string }) => {
         href={`/${show.media_type}/${getSlug(show.id, getNameFromShow(show))}`}
       />
       
-      <CustomImage
-        src={
-          show.poster_path ?? show.backdrop_path
-            ? `https://image.tmdb.org/t/p/w500${
-                show.poster_path ?? show.backdrop_path
-              }`
-            : '/images/grey-thumbnail.jpg'
-        }
-        alt={show.title ?? show.name ?? 'poster'}
-        className="h-full w-full cursor-pointer rounded-lg "
-        fill
-        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 100vw, 33vw"
-        style={{
-          objectFit: 'cover',
-        }}
-     
-        onError={imageOnErrorHandler}
-      />
+     <div className="relative w-full h-full">
+  {/* MOBILE VIEW ONLY: Render Backdrop */}
+  <div className="block md:hidden h-full w-full">
+    <CustomImage
+src={forcePosterImage && show.poster_path  ? `https://image.tmdb.org/t/p/w500${show.poster_path}`
+          :  show.backdrop_path 
+          ? `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
+          : show.poster_path 
+          ? `https://image.tmdb.org/t/p/w500${show.poster_path}`
+          : '/images/grey-thumbnail.jpg'
+      }      alt={show.title ?? show.name ?? 'backdrop'}
+      className="h-full w-full cursor-pointer rounded-lg "
+      fill
+      sizes="90vw"
+    />
+  </div>
+
+  {/* DESKTOP VIEW ONLY: Render Poster */}
+  <div className="hidden md:block h-full w-full">
+    <CustomImage
+src={
+        show.poster_path 
+          ? `https://image.tmdb.org/t/p/w500${show.poster_path}`
+          : show.backdrop_path 
+          ? `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
+          : '/images/grey-thumbnail.jpg'
+      }      alt={show.title ?? show.name ?? 'poster'}
+      className="h-full w-full cursor-pointer rounded-lg "
+      fill
+      sizes="(max-width: 1200px) 33vw, 16vw"
+    />
+  </div>
+</div>
 
       {/* Hover Overlay */}
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-blue-950 via-slate-950 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0">

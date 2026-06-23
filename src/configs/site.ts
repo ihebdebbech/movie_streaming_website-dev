@@ -38,8 +38,8 @@ export const siteConfig = {
   url: env.NEXT_PUBLIC_APP_URL,
   ogImage: `${env.NEXT_PUBLIC_APP_URL}/images/hero.jpg`,
   links: {
-    twitter: `${env.NEXT_PUBLIC_TWITTER}`,
-    github: 'https://github.com/ihebdebbech/movie_streaming_website-dev',
+    twitter: `${env.NEXT_PUBLIC_APP_URL}`,
+    github: '',
     githubAccount: '',
   },
   socialLinks: [
@@ -100,8 +100,8 @@ export const siteConfig = {
     //   // icon: Icons.list,
     // },
     {
-      title: 'New & Popular',
-      href: '/new-and-popular',
+      title: 'Filmozo AI',
+      href: '/chat',
       // icon: Icons.trendingUp,
     },
   ],
